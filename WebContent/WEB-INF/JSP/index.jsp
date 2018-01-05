@@ -1,5 +1,4 @@
 <%-- Een welkom pagina --%>
-<%@page import="java.time.LocalDateTime"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <!DOCTYPE html>
 <html lang="nl">
@@ -7,7 +6,7 @@
 		<title>Pizza Luigi</title>
 		<link rel="icon" href="images/favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="styses/default.css">
+		<link rel="stylesheet" href="styles/default.css">
 	</head>
 	<body>
 		<h1>Pizza Luigi</h1>
