@@ -1,13 +1,16 @@
 package be.vdab.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import be.vdab.entities.Adres;
 import be.vdab.entities.Begroeting;
+import be.vdab.entities.Persoon;
 
 @WebServlet("/index.htm")
 public class IndexServlet extends HttpServlet {
@@ -17,6 +20,8 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setAttribute("zaakvoerder", new Persoon("Luigi", "Peperone", 7, true,
+				new Adres("grote markt", "3", 9700, "Oudenaarde")));
 		request.setAttribute("begroeting", new Begroeting());
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
