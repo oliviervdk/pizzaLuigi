@@ -10,19 +10,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//@WebServlet("/index.htm")
+@WebServlet("/index.htm")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final String VIEW = "/WEB-INF/JSP/index.jsp";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		out.println("<!doctype html>");
-		out.println("<html lang='nl'><head>");
-		out.println("<title>Pizza Luigi</title></head>");
-		out.println("<body><h1>");
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		int uur = LocalDateTime.now().getHour();
-		out.print(uur >= 6 && uur < 12 ? "Goede morgen" : uur >= 12 && uur < 18 ? "Goede Middag" : "Goede avond");
-		out.println("</h1></body></html>");
+		request.setAttribute("begroeting", uur >= 6 && uur < 12 ? "Goede morgen" :
+			uur >= 12 && uur <18 ? "Goede middag" : "Goede Avond");
+		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 
 }
